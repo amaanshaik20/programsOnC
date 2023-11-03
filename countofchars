@@ -1,0 +1,46 @@
+You’re given a number n. If write all the numbers from 1 to n in a paper, we have to
+find the number of characters written on the paper.For example if n=13, the output
+should be 17 if n = 101, the output should be 195
+
+Input Format
+
+13
+
+Constraints
+
+10<=n<=200
+
+Output Format
+
+17
+
+#include <stdio.h>
+
+int countCharacters(int n) {
+    int count = 0;
+    
+    for (int i = 1; i <= n; i++) {
+        int num = i;
+        while (num > 0) {
+            count++;
+            num /= 10;
+        }
+    }
+
+    return count;
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    if (n < 10 || n > 200) {
+        printf("Invalid input. Please ensure n is between 10 and 200.\n");
+        return 1;
+    }
+
+    int result = countCharacters(n);
+    printf("%d\n", result);
+
+    return 0;
+}
